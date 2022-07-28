@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -16,6 +17,11 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private EditText edtUsername, edtPassword;
     private Button btnSignIn;
 
+    private ImageView imageNature;
+
+    private int currentIndex = 0;
+    private int [] imagesOfNature = {R.drawable.nature_image1,R.drawable.nature_image2,R.drawable.nature_image3};
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,6 +29,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.login_activity);
 
         initializeViews();
+        imageNature.setImageResource(imagesOfNature[currentIndex]);
         initListeners();
     }
 
@@ -31,11 +38,22 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         edtUsername = findViewById(R.id.edtUsername);
         edtPassword = findViewById(R.id.edtPassword);
         btnSignIn = findViewById(R.id.btnSignIn);
+        imageNature = findViewById(R.id.imageNature);
     }
 
     private void initListeners(){
         txtWelcomeMessage.setOnClickListener(this);
         btnSignIn.setOnClickListener(this);
+
+        imageNature.setOnClickListener(new ImageClickListener());
+    }
+
+    class ImageClickListener implements View.OnClickListener{
+        @Override
+        public void onClick(View v) {
+            currentIndex++;
+            imageNature.setImageResource(imagesOfNature[currentIndex]);
+        }
     }
 
     @Override
@@ -50,8 +68,11 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 txtWelcomeMessage.setText("Login Failed!");
             }
         }
-       // Resources resources = getResources();
-       // int tealColorRes = resources.getColor(R.color.teal_200);
-       // txtWelcomeMessage.setBackgroundColor(Color.BLUE);
+
+       /*
+        Resources resources = getResources();
+        int tealColorRes = resources.getColor(R.color.teal_200);
+        txtWelcomeMessage.setBackgroundColor(Color.BLUE);
+       */
     }
 }

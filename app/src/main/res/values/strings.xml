@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">FirstApplication</string>
     <string name="welcome">Welcome</string>
-    <string name="sign_in">Sign In</string>
+    <string name="sign_in">sign_in</string>
 </resources>

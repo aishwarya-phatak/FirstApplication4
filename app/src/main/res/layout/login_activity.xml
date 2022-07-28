@@ -5,6 +5,12 @@
     android:orientation="vertical"
     android:padding="20sp"
     android:gravity="center">
+    
+    <ImageView
+        android:src="@drawable/ic_launcher_foreground"
+        android:id="@+id/imageNature"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"/>
 
     <TextView
         android:id="@+id/txtWelcomeMessage"
